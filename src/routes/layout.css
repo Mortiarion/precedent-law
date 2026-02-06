@@ -1,1 +1,102 @@
 @import 'tailwindcss';
+
+:root {
+	--color-cab18a: #cab18a;
+	--color-5c524b: #5c524b;
+	--color-cccccc: #cccccc;
+	--color-dfdfdf: #dfdfdf;
+	--font-roboto: 'Roboto', sans-serif;
+	--font-source: 'Source Serif 4', serif;
+	--color-white: #ffffff;
+}
+
+@layer utilities {
+	.font-roboto {
+		font-family: var(--font-roboto);
+	}
+
+	.font-source {
+		font-family: var(--font-source);
+	}
+
+	.bg-header-img {
+		background: url('/img/header-2xl.jpg') no-repeat center/cover;
+	}
+
+	.bg-footer-img {
+		background: url('/img/footer-bg-img.jpg') no-repeat center/cover;
+	}
+
+	.color-cab18a {
+		color: var(--color-cab18a);
+	}
+
+	.color-5c524b {
+		color: var(--color-5c524b);
+	}
+
+	.color-cccccc {
+		color: var(--color-cccccc);
+	}
+
+	.border-color-dfdfdf {
+		border-color: var(--color-dfdfdf);
+	}
+
+	.main-title {
+		@apply text-center text-6xl font-semibold text-black pt-16 mb-10 lg:pt-20 xl:pt-0;
+		font-family: var(--font-source);
+	}
+
+	.bg-about-as {
+		background: linear-gradient(360deg, #eee7da 4.75%, rgba(255, 255, 255, 0.1) 100%);
+	}
+
+	.team-title {
+		@apply text-3xl font-semibold mb-2.5 max-md:mb-1 max-lg:text-2xl max-md:text-xl;
+		font-family: var(--font-source);
+	}
+
+	.team-subtitle {
+		@apply mb-7 inline-block text-xl max-lg:text-lg max-md:text-base;
+		color: var(--color-cab18a);
+	}
+
+	.team-container {
+		@apply flex justify-between gap-40 px-5 max-xl:gap-20 max-lg:flex-col max-lg:items-center;
+	}
+	
+	.team-container-reverse {
+		@apply flex justify-between gap-40 px-5 max-xl:gap-20 max-lg:items-center max-lg:flex-col-reverse;
+	}
+
+	.color-292424 {
+		color: #292424;
+	}
+
+	.our-team-p {
+		@apply mb-5 text-left max-lg:text-center;
+	}
+
+	.team-img {
+		max-width: 510px;
+		width: 100%;
+		max-height: 596px;
+		height: 100%;
+		@apply max-xl:object-cover;
+	}
+}
+
+@layer base {
+	.container {
+		@apply mx-auto px-20 max-lg:px-10 max-md:px-8;
+	}
+}
+
+.container {
+	max-width: 1440px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
