@@ -1,11 +1,8 @@
-<section id="about-us" class="bg-about-as text-black">
-	<div class="container pb-10 lg:px-8 xl:px-20 xl:pt-14">
-		<div class="flex justify-between gap-28 lg:gap-10 max-xl:flex-col">
-			
-			<article class="w-1/2 max-xl:w-full">
-				<h3 class="main-title mb-10 max-xl:mb-5">
-					Про нас
-				</h3>
+<section id="about-us" class="bg-about-as">
+	<div class="container pt-14 pb-10 xl:px-20">
+		<div class="flex lg:flex-col lg:gap-10 xl:flex-row xl:gap-28">
+			<article class="xl:w-3/5">
+				<h3 class="main-title mb-10">Про нас</h3>
 
 				<div class="flex flex-col gap-10">
 					<p>
@@ -52,16 +49,15 @@
 						Адвокатське об'єднання <span class="font-semibold">"Прецедент права"</span> – це ваша надійна
 						правова підтримка у будь-якій ситуації.
 					</p>
-
 				</div>
 			</article>
 
-			<picture class="mb-32 max-lg:hidden">
+			<picture class="hidden w-full max-w-136 lg:mb-32 lg:block lg:mx-auto">
 				<source srcset="./img/about-as.webp" type="image/webp" />
 
 				<img
-					class="h-full max-xl:mx-auto"
 					loading="lazy"
+					class="lg:mx-auto xl:mx-0"
 					width="544"
 					height="762"
 					src="./img/about-as.jpg"

@@ -5,6 +5,7 @@
 	--color-5c524b: #5c524b;
 	--color-cccccc: #cccccc;
 	--color-dfdfdf: #dfdfdf;
+	--color-7d7e7e: #7d7e7e;
 	--font-roboto: 'Roboto', sans-serif;
 	--font-source: 'Source Serif 4', serif;
 	--color-white: #ffffff;
@@ -43,8 +44,12 @@
 		border-color: var(--color-dfdfdf);
 	}
 
+	.color-7d7e7e {
+		color: var(--color-7d7e7e);
+	}
+
 	.main-title {
-		@apply text-center text-6xl font-semibold text-black pt-16 mb-10 lg:pt-20 xl:pt-0;
+		@apply text-center text-6xl font-semibold;
 		font-family: var(--font-source);
 	}
 
@@ -53,21 +58,21 @@
 	}
 
 	.team-title {
-		@apply text-3xl font-semibold mb-2.5 max-md:mb-1 max-lg:text-2xl max-md:text-xl;
+		@apply  font-semibold text-xl mb-1 xl:text-3xl text-center xl:text-left;
 		font-family: var(--font-source);
 	}
 
 	.team-subtitle {
-		@apply mb-7 inline-block text-xl max-lg:text-lg max-md:text-base;
+		@apply mb-7 block text-center text-base xl:text-xl xl:text-left;
 		color: var(--color-cab18a);
 	}
 
 	.team-container {
-		@apply flex justify-between gap-40 px-5 max-xl:gap-20 max-lg:flex-col max-lg:items-center;
+		@apply flex gap-5 flex-col items-center xl:items-start xl:flex-row xl:gap-40;
 	}
 	
 	.team-container-reverse {
-		@apply flex justify-between gap-40 px-5 max-xl:gap-20 max-lg:items-center max-lg:flex-col-reverse;
+		@apply flex gap-5 flex-col items-center xl:items-start xl:flex-row-reverse xl:gap-40;
 	}
 
 	.color-292424 {
@@ -75,7 +80,7 @@
 	}
 
 	.our-team-p {
-		@apply mb-5 text-left max-lg:text-center;
+		@apply mb-8 text-center xl:text-left;
 	}
 
 	.team-img {
@@ -83,13 +88,18 @@
 		width: 100%;
 		max-height: 596px;
 		height: 100%;
-		@apply max-xl:object-cover;
+		padding: 0 10px;
+		@apply xl:mb-8
+	}
+
+	.read-more-btn {
+		@apply ml-auto mb-10 cursor-pointer flex xl:hidden text-sm;
 	}
 }
 
 @layer base {
 	.container {
-		@apply mx-auto px-20 max-lg:px-10 max-md:px-8;
+		@apply mx-auto px-8;
 	}
 }
 

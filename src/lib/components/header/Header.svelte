@@ -19,7 +19,7 @@
 					isLocation = entry.isIntersecting;
 				},
 				{
-					threshold: 0.2
+					threshold: 0
 				}
 			);
 
@@ -31,7 +31,7 @@
 </script>
 
 <header class="bg-header-img sticky top-0 z-10 text-white">
-	<div class="container pt-11 lg:pt-8">
+	<div class="container pt-11 lg:pt-8 lg:px-20">
 		<HeaderMobile />
 
 		<nav class="flex flex-col max-lg:hidden">
