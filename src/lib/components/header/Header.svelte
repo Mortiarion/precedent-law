@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 
 	import Location from './components/Location.svelte';
@@ -11,27 +11,27 @@
 	let isLocation = $state(true);
 
 	onMount(() => {
-		const aboutUsSection = document.getElementById('about-us');
+		const aboutUsTitle = document.getElementById('about-us-title');
 
-		if (aboutUsSection) {
-			const observer = new IntersectionObserver(
-				([entry]) => {
-					isLocation = entry.isIntersecting;
-				},
-				{
-					threshold: 0
-				}
-			);
+		if (!aboutUsTitle) return;
 
-			observer.observe(aboutUsSection);
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				isLocation = entry.isIntersecting;
+			},
+			{ threshold: 0.1 }
+		);
 
-			onDestroy(() => observer.disconnect());
-		}
+		observer.observe(aboutUsTitle);
+
+		return () => {
+			observer.disconnect();
+		};
 	});
 </script>
 
 <header class="bg-header-img sticky top-0 z-10 text-white">
-	<div class="container pt-11 lg:pt-8 lg:px-20">
+	<div class="container pt-11 lg:px-20 lg:pt-8">
 		<HeaderMobile />
 
 		<nav class="flex flex-col max-lg:hidden">

@@ -68,11 +68,11 @@
 	}
 
 	.team-container {
-		@apply flex gap-5 flex-col items-center xl:items-start xl:flex-row xl:gap-40;
+		@apply flex gap-5 flex-col items-center mr-2.5 xl:items-start xl:flex-row xl:gap-40;
 	}
 	
 	.team-container-reverse {
-		@apply flex gap-5 flex-col items-center xl:items-start xl:flex-row-reverse xl:gap-40;
+		@apply flex gap-5 flex-col items-center ml-2.5 xl:items-start xl:flex-row-reverse xl:gap-40;
 	}
 
 	.color-292424 {

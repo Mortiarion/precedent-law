@@ -1,24 +1,28 @@
+<script lang="ts">
+	import { fadeOnVisible } from '$lib';
+</script>
+
 <section id="about-us" class="bg-about-as">
 	<div class="container pt-14 pb-10 xl:px-20">
 		<div class="flex lg:flex-col lg:gap-10 xl:flex-row xl:gap-28">
 			<article class="xl:w-3/5">
-				<h3 class="main-title mb-10">Про нас</h3>
+				<h3 class="main-title mb-10" id="about-us-title" use:fadeOnVisible>Про нас</h3>
 
 				<div class="flex flex-col gap-10">
-					<p>
+					<p use:fadeOnVisible>
 						Наше адвокатське об'єднання <span class="font-semibold">"Прецедент права"</span> існує вже
 						понад 8 років, і за цей час ми зарекомендували себе як надійних і компетентних правозахисників.
 						Ми пишаємося численними успішними справами та високим рівнем довіри наших клієнтів.
 					</p>
 
-					<p>
+					<p use:fadeOnVisible>
 						<span class="font-semibold">Професіоналізм:</span>
 						Наша команда складається з висококваліфікованих адвокатів та юристів, кожен з яких має значний
 						досвід у своїй спеціалізації. Ми забезпечуємо індивідуальний підхід до кожної справи, уважно
 						вивчаючи всі деталі і розробляючи стратегії, що максимально захищають інтереси наших клієнтів.
 					</p>
 
-					<p>
+					<p use:fadeOnVisible>
 						<span class="font-semibold">Досвід:</span>
 						За понад 8 років роботи адвокатське об'єднання
 						<span class="font-semibold">"Прецедент права"</span> успішно вирішило безліч юридичних питань
@@ -28,7 +32,7 @@
 						сферою. Кожна справа, яку ми ведемо, отримує належну увагу та професійний підхід.
 					</p>
 
-					<p>
+					<p use:fadeOnVisible>
 						<span class="font-semibold">Репутація:</span>
 						Адвокатське об'єднання <span class="font-semibold">"Прецедент права"</span> славиться високим
 						рівнем успіху в судових процесах. Ми домоглися значної кількості виправдовувальних вироків
@@ -36,7 +40,7 @@
 						відданості справі.
 					</p>
 
-					<p>
+					<p use:fadeOnVisible>
 						<span class="font-semibold">Чому обрати нас:</span>
 						Ми розуміємо, що кожна справа унікальна і вимагає особливого підходу. Наша команда не тільки
 						забезпечує високий рівень правової допомоги, але й створює дружню та підтримуючу атмосферу
@@ -45,14 +49,14 @@
 						ваші правові питання будуть вирішені на найвищому рівні.
 					</p>
 
-					<p>
+					<p use:fadeOnVisible>
 						Адвокатське об'єднання <span class="font-semibold">"Прецедент права"</span> – це ваша надійна
 						правова підтримка у будь-якій ситуації.
 					</p>
 				</div>
 			</article>
 
-			<picture class="hidden w-full max-w-136 lg:mb-32 lg:block lg:mx-auto">
+			<picture use:fadeOnVisible class="hidden w-full max-w-136 lg:mx-auto lg:mb-32 lg:block">
 				<source srcset="./img/about-as.webp" type="image/webp" />
 
 				<img
