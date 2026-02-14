@@ -9,6 +9,7 @@
 	--font-roboto: 'Roboto', sans-serif;
 	--font-source: 'Source Serif 4', serif;
 	--color-white: #ffffff;
+	--color-popup-overlay: #49331275;
 }
 
 @layer utilities {
@@ -28,8 +29,16 @@
 		background: url('/img/footer-bg-img.jpg') no-repeat center/cover;
 	}
 
+	.popup-overlay {
+		background-color: var(--color-popup-overlay);
+	}
+
 	.color-cab18a {
 		color: var(--color-cab18a);
+	}
+
+	.bg-button-our-services {
+		background-color: var(--color-cab18a);
 	}
 
 	.color-5c524b {
