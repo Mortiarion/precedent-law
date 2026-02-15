@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
@@ -6,7 +7,7 @@
 </script>
 
 <div class="team-container">
-	<picture class="max-w-full">
+	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-six.webp" type="image/webp" />
 		<img
 			class="team-img"
@@ -19,11 +20,11 @@
 	</picture>
 
 	<div class="color-292424 xl:w-1/2">
-		<h6 class="team-title">Младен Бардук</h6>
+		<h6 class="team-title" use:fadeOnVisible>Младен Бардук</h6>
 
-		<span class="team-subtitle">Голова адвокатського об'єднання</span>
+		<span class="team-subtitle" use:fadeOnVisible>Голова адвокатського об'єднання</span>
 
-		<p class="our-team-p">
+		<p class="our-team-p" use:fadeOnVisible>
 			<span class="font-semibold">Професійний досвід:</span>
 			<br class="hidden xl:block" />
 			Младен Бардук веде адвокатську практику з 2009 року. До цього він працював у суді на різних посадах,
@@ -32,7 +33,7 @@
 		</p>
 
 		<div class="max-xl:hidden">
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
 				Младен спеціалізується у різних галузях права, що дозволяє йому ефективно вирішувати найрізноманітніші
@@ -40,7 +41,7 @@
 				робить його універсальним юристом.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Особисті якості:</span>
 				<br />
 				Младен є душею команди та головою нашого адвокатського об'єднання. Його нестандартний підхід до
@@ -48,7 +49,7 @@
 				креативністю та здатністю знаходити унікальні рішення для складних ситуацій.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Чому обрати Младена:</span>
 				<br />
 				Чому обрати Младена: Младен Бардук не лише є дуже хорошим спеціалістом, але й лідером, який веде
@@ -62,7 +63,7 @@
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
 							<br />
 							Младен спеціалізується у різних галузях права, що дозволяє йому ефективно вирішувати найрізноманітніші
@@ -70,7 +71,7 @@
 							що робить його універсальним юристом.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Особисті якості:</span>
 							<br />
 							Младен є душею команди та головою нашого адвокатського об'єднання. Його нестандартний підхід
@@ -78,7 +79,7 @@
 							професіоналізмом, креативністю та здатністю знаходити унікальні рішення для складних ситуацій.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Чому обрати Младена:</span>
 							<br />
 							Чому обрати Младена: Младен Бардук не лише є дуже хорошим спеціалістом, але й лідером, який

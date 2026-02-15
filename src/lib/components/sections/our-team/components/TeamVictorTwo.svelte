@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
@@ -6,7 +7,7 @@
 </script>
 
 <div class="team-container-reverse">
-	<picture class="max-w-full">
+	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-two.webp" type="image/webp" />
 		<img
 			class="team-img"
@@ -19,11 +20,11 @@
 	</picture>
 
 	<div class="color-292424 xl:w-1/2">
-		<h6 class="team-title">Віктор Бардук</h6>
+		<h6 class="team-title" use:fadeOnVisible>Віктор Бардук</h6>
 
-		<span class="team-subtitle"> Адвокат </span>
+		<span class="team-subtitle" use:fadeOnVisible> Адвокат </span>
 
-		<p class="our-team-p">
+		<p class="our-team-p" use:fadeOnVisible>
 			<span class="font-semibold">Професійний досвід:</span>
 			<br class="hidden xl:block" />
 			Віктор Бардук веде адвокатську практику з 2012 року. До цього він тривалий час працював у правоохоронних
@@ -33,21 +34,21 @@
 		</p>
 
 		<div class="max-xl:hidden">
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
 				Віктор спеціалізується на кримінальному процесі. Завдяки його глибоким знанням та досвіду, багато
 				його клієнтів отримали виправдовувальні вироки.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Досвід:</span>
 				<br />
 				Загальний стаж юридичної роботи Віктора складає понад 25 років, що свідчить про його високу компетентність
 				та надійність як адвоката.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Чому обрати Віктора:</span>
 				<br />
 				З таким адвокатом ви під надійним захистом. Віктор Бардук забезпечує професійний підхід та індивідуальну
@@ -59,21 +60,21 @@
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
 							<br />
 							Віктор спеціалізується на кримінальному процесі. Завдяки його глибоким знанням та досвіду,
 							багато його клієнтів отримали виправдовувальні вироки.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Досвід:</span>
 							<br />
 							Загальний стаж юридичної роботи Віктора складає понад 25 років, що свідчить про його високу
 							компетентність та надійність як адвоката.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Чому обрати Віктора:</span>
 							<br />
 							З таким адвокатом ви під надійним захистом. Віктор Бардук забезпечує професійний підхід

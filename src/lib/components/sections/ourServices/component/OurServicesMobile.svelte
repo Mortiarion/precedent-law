@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib';
 	import { getCategories, getServicesByCategory } from '$lib/services';
 	import Popup from './Popup.svelte';
 
 	const categories = getCategories();
 	let activeCategory = $state('Все');
 	let showFilter = $state(false);
-	// let popupVisibleProp = $state(false);
-    let showModal = $state(false);
+	let showModal = $state(false);
 
 	function toggleFilter() {
 		showFilter = !showFilter;
@@ -18,7 +18,6 @@
 	}
 </script>
 
-<!-- Кнопка фільтра -->
 <button
 	onclick={toggleFilter}
 	class="font-source mb-10 flex flex-row-reverse items-center justify-center gap-2.5 text-left text-sm font-semibold"
@@ -41,9 +40,8 @@
 	</svg>
 </button>
 
-<!-- Список категорій -->
 {#if showFilter}
-	<div class="filter-buttons">
+	<div class="filter-buttons font-source font-semibold" use:fadeOnVisible>
 		{#each categories as category}
 			<button
 				class="filter-button {category === activeCategory ? 'active' : ''}"
@@ -55,10 +53,9 @@
 	</div>
 {/if}
 
-<!-- Список послуг -->
 <ul class="filter-list mb-20 flex flex-col gap-5">
 	{#each getServicesByCategory(activeCategory) as item}
-		<li class="service-item">
+		<li class="service-item" use:fadeOnVisible>
 			<span class="font-roboto text-center text-sm font-normal">
 				{item}
 			</span>
@@ -73,10 +70,7 @@
 	{/each}
 </ul>
 
-<!-- Popup -->
-<!-- {#if popupVisible} -->
-	<Popup bind:showModal />
-<!-- {/if} -->
+<Popup bind:showModal />
 
 <style lang="postcss">
 	.filter-buttons {

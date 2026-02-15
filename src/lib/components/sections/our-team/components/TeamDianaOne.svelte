@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
@@ -6,7 +7,7 @@
 </script>
 
 <div class="team-container">
-	<picture class="max-w-full">
+	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-one.webp" type="image/webp" />
 		<img
 			class="team-img"
@@ -19,36 +20,53 @@
 	</picture>
 
 	<div class="color-292424 xl:w-1/2">
-		<h6 class="team-title">Діана Лісіна</h6>
+		<h6 class="team-title" use:fadeOnVisible>
+			Діана Лісіна
+		</h6>
 
-		<span class="team-subtitle"> Адвокат </span>
+		<span class="team-subtitle" use:fadeOnVisible> 
+			Адвокат
+		</span>
 
-		<p class="our-team-p">
-			<span class="font-semibold">Професійний досвід:</span>
+		<p class="our-team-p" use:fadeOnVisible>
+			<span class="font-semibold">
+				Професійний досвід:
+			</span>
+
 			<br class="hidden xl:block" />
+
 			Діана Лісіна веде адвокатську практику з початку 2022 року. Незважаючи на відносно короткий термін
 			професійної діяльності, вона вже встигла зарекомендувати себе як висококваліфікований фахівець.
 		</p>
 
 		<div class="max-xl:hidden">
-			<p class="our-team-p">
-				<span class="font-semibold">Спеціалізація:</span>
+			<p class="our-team-p" use:fadeOnVisible>
+				<span class="font-semibold">
+					Спеціалізація:
+				</span>
+
 				<br />
 				Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
 				з адміністративного права. Її експертні знання та досвід допомогли врятувати не одне підприємство
 				від правових труднощів.
 			</p>
 
-			<p class="our-team-p">
-				<span class="font-semibold">Особисті якості:</span>
+			<p class="our-team-p" use:fadeOnVisible>
+				<span class="font-semibold">
+					Особисті якості:
+				</span>
+
 				<br />
 				Нехай Вас не бентежить вік та привабливість Діани. Вона є відмінним спеціалістом, яка відзначається
 				виконавчістю, чесністю та порядністю. Її професіоналізм, уважність до деталей та відданість своїй
 				роботі забезпечують успішний результат кожної справи, якою вона займається.
 			</p>
 
-			<p class="our-team-p">
-				<span class="font-semibold">Чому обрати Діану:</span>
+			<p class="our-team-p" use:fadeOnVisible>
+				<span class="font-semibold">
+					Чому обрати Діану:
+				</span>
+
 				<br />
 				Діана Лісіна - це надійний партнер у вирішенні юридичних питань.Її компетентність, відповідальність
 				та прагнення досягати найкращих результатів роблять її незамінною для клієнтів, які шукають надійну
@@ -60,24 +78,34 @@
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
-						<p class="our-team-p">
-							<span class="font-semibold">Спеціалізація:</span>
+						<p class="our-team-p" use:fadeOnVisible>
+							<span class="font-semibold">
+								Спеціалізація:
+							</span>
+
 							<br />
+							
 							Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
 							з адміністративного права. Її експертні знання та досвід допомогли врятувати не одне підприємство
 							від правових труднощів.
 						</p>
 
-						<p class="our-team-p">
-							<span class="font-semibold">Особисті якості:</span>
+						<p class="our-team-p" use:fadeOnVisible>
+							<span class="font-semibold">
+								Особисті якості:
+							</span>
+
 							<br />
 							Нехай Вас не бентежить вік та привабливість Діани. Вона є відмінним спеціалістом, яка відзначається
 							виконавчістю, чесністю та порядністю. Її професіоналізм, уважність до деталей та відданість
 							своїй роботі забезпечують успішний результат кожної справи, якою вона займається.
 						</p>
 
-						<p class="our-team-p">
-							<span class="font-semibold">Чому обрати Діану:</span>
+						<p class="our-team-p" use:fadeOnVisible>
+							<span class="font-semibold">
+								Чому обрати Діану:
+							</span>
+							
 							<br />
 							Діана Лісіна - це надійний партнер у вирішенні юридичних питань.Її компетентність, відповідальність
 							та прагнення досягати найкращих результатів роблять її незамінною для клієнтів, які шукають

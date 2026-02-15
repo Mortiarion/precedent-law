@@ -12,8 +12,14 @@
 
 	onMount(() => {
 		const aboutUsTitle = document.getElementById('about-us-title');
+		const privacyPolicyTitle = document.getElementById('privacy-policy-title');
+		const targetElement = aboutUsTitle || privacyPolicyTitle;
 
-		if (!aboutUsTitle) return;
+		if (!targetElement) {
+			isLocation = false;
+
+			return;
+		} 
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -22,7 +28,7 @@
 			{ threshold: 0.1 }
 		);
 
-		observer.observe(aboutUsTitle);
+		observer.observe(targetElement);
 
 		return () => {
 			observer.disconnect();

@@ -5,16 +5,7 @@
 
 	const categories = getCategories();
 	let activeCategory = $state('Все');
-	// let popupVisible = $state(false);
     let showModal = $state(false);
-
-	// function togglePopup() {
-	// 	popupVisible = !popupVisible;
-	// }
-
-	// $effect(() => {
-	// 	document.body.classList.toggle('overflow-hidden', popupVisible);
-	// });
 </script>
 
 <div class="mb-20 flex flex-wrap justify-center px-25">

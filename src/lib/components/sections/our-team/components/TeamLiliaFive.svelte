@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
@@ -6,7 +7,7 @@
 </script>
 
 <div class="team-container-reverse">
-	<picture class="max-w-full">
+	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-five.webp" type="image/webp" />
 		<img
 			class="team-img"
@@ -19,11 +20,11 @@
 	</picture>
 
 	<div class="color-292424 xl:w-1/2">
-		<h6 class="team-title">Лілія Братим</h6>
+		<h6 class="team-title" use:fadeOnVisible >Лілія Братим</h6>
 
-		<span class="team-subtitle">Старший консультант</span>
+		<span class="team-subtitle" use:fadeOnVisible>Старший консультант</span>
 
-		<p class="our-team-p">
+		<p class="our-team-p" use:fadeOnVisible>
 			<span class="font-semibold">Професійний досвід:</span>
 			<br class="hidden xl:block" />
 			Лілія Братим розпочала свою юридичну кар’єру у 2004 році у відділі економіки слідчого відділу Міністерства
@@ -32,7 +33,7 @@
 		</p>
 
 		<div class="max-xl:hidden">
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
 				Лілія спеціалізується на міжнародному праві, зовнішньоекономічній діяльності, міграційному праві,
@@ -40,14 +41,14 @@
 				комерції, включаючи крипто право та ІТ право.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Досвід:</span>
 				<br />
 				З 20-річним стажем у юридичній практиці, Лілія втілює юридичну майстерність та міжнародний досвід.
 				Вона не тільки розуміє закони, але й передбачає їх вплив на ваш бізнес та життя.
 			</p>
 
-			<p class="our-team-p">
+			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Чому обрати Лілію?</span>
 				<br />
 				Лілія володіє кількома мовами, включаючи англійську, німецьку, турецьку та грузинську, і є стратегічним
@@ -69,7 +70,7 @@
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
 							<br />
 							Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
@@ -77,7 +78,7 @@
 							від правових труднощів.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Особисті якості:</span>
 							<br />
 							Нехай Вас не бентежить вік та привабливість Діани. Вона є відмінним спеціалістом, яка відзначається
@@ -85,7 +86,7 @@
 							своїй роботі забезпечують успішний результат кожної справи, якою вона займається.
 						</p>
 
-						<p class="our-team-p">
+						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Чому обрати Діану:</span>
 							<br />
 							Діана Лісіна - це надійний партнер у вирішенні юридичних питань.Її компетентність, відповідальність
