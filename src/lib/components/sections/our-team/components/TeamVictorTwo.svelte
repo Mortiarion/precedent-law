@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
-	let { toggleInfo, isShowInfo } = $props();
+	let isShowInfo = $state(false)
+	let teamVictor: HTMLDivElement;
+	
+	function toggleInfo() {
+		// Якщо інформація зараз показана (тобто ми її ховаємо)
+		if (isShowInfo) {
+			// Скролимо до початку цього компонента
+			teamVictor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+		isShowInfo = !isShowInfo;
+	}
 </script>
 
-<div class="team-container-reverse">
+<div class="team-container-reverse" bind:this={teamVictor}>
 	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-two.webp" type="image/webp" />
 		<img
@@ -33,7 +43,7 @@
 			уповноваженого податкової міліції.
 		</p>
 
-		<div class="max-xl:hidden">
+		<div class="hidden xl:block">
 			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
@@ -56,27 +66,27 @@
 			</p>
 		</div>
 
-		<div class="max-md:visible">
+		<div class="xl:hidden">
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
-							<br />
+							
 							Віктор спеціалізується на кримінальному процесі. Завдяки його глибоким знанням та досвіду,
 							багато його клієнтів отримали виправдовувальні вироки.
 						</p>
 
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Досвід:</span>
-							<br />
+
 							Загальний стаж юридичної роботи Віктора складає понад 25 років, що свідчить про його високу
 							компетентність та надійність як адвоката.
 						</p>
 
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Чому обрати Віктора:</span>
-							<br />
+
 							З таким адвокатом ви під надійним захистом. Віктор Бардук забезпечує професійний підхід
 							та індивідуальну увагу до кожного клієнта, що гарантує успішний результат справи.
 						</p>
@@ -85,7 +95,7 @@
 			{/if}
 
 			<button
-				class="read-more-btn"
+				class="read-more-btn color-7d7e7e"
 				onclick={toggleInfo}
 				aria-label={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
 				title={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
@@ -93,7 +103,7 @@
 				{#if isShowInfo}
 					<span> Сховати </span>
 				{:else}
-					<span class="flex items-end color-7d7e7e">
+					<span class="flex items-end">
 						Читати далі
 
 						<i>

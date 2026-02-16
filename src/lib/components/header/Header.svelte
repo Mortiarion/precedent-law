@@ -1,37 +1,42 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	import { slide } from 'svelte/transition';
 
 	import Location from './components/Location.svelte';
-	import Logo from './components/Logo.svelte';
 	import NavigationMenu from './components/Navigation.svelte';
 	import SocialMenuLink from './components/Social.svelte';
 	import HeaderMobile from './components/HeaderMobile.svelte';
+	import LogoIcon from '$lib/icons/LogoIcon.svelte';
 
-	let isLocation = $state(true);
+	let isLocation = $state<boolean | null>(null);
 
-	onMount(() => {
-		const aboutUsTitle = document.getElementById('about-us-title');
-		const privacyPolicyTitle = document.getElementById('privacy-policy-title');
-		const targetElement = aboutUsTitle || privacyPolicyTitle;
+	$effect(() => {
+		page.url; // тригер на зміну сторінки
 
-		if (!targetElement) {
-			isLocation = false;
+		let observer: IntersectionObserver | null = null;
 
-			return;
-		} 
+		queueMicrotask(() => {
+			const target =
+				document.getElementById('about-us-title') ||
+				document.getElementById('privacy-policy-title');
 
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				isLocation = entry.isIntersecting;
-			},
-			{ threshold: 0.1 }
-		);
+			if (!target) {
+				isLocation = false;
+				return;
+			}
 
-		observer.observe(targetElement);
+			observer = new IntersectionObserver(
+				([entry]) => {
+					isLocation = entry.isIntersecting;
+				},
+				{ threshold: 0.1 }
+			);
+
+			observer.observe(target);
+		});
 
 		return () => {
-			observer.disconnect();
+			observer?.disconnect();
 		};
 	});
 </script>
@@ -42,7 +47,9 @@
 
 		<nav class="flex flex-col max-lg:hidden">
 			<div class="flex items-center">
-				<Logo />
+				<a href="/" title="На головну" aria-label="На головну">
+					<LogoIcon />
+				</a>
 
 				<NavigationMenu />
 
@@ -51,7 +58,7 @@
 
 			<hr class="color-5c524b mt-5 w-full" />
 
-			{#if isLocation}
+			{#if isLocation === true}
 				<div transition:slide>
 					<Location />
 				</div>

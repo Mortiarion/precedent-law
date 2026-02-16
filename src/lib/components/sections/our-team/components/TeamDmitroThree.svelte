@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
-	let { toggleInfo, isShowInfo } = $props();
+	let isShowInfo = $state(false)
+	let teamDmitro: HTMLDivElement;
+	
+	function toggleInfo() {
+		// Якщо інформація зараз показана (тобто ми її ховаємо)
+		if (isShowInfo) {
+			// Скролимо до початку цього компонента
+			teamDmitro.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+		isShowInfo = !isShowInfo;
+	}
 </script>
 
-<div class="team-container">
+<div class="team-container" bind:this={teamDmitro}>
 	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-three.webp" type="image/webp" />
 		<img
@@ -38,7 +48,7 @@
 			різних галузях права, зокрема у господарському, цивільному та сімейному праві.
 		</p>
 
-		<div class="max-xl:hidden">
+		<div class="hidden xl:block">
 			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">
 					Спеціалізація:
@@ -61,7 +71,7 @@
 			</p>
 		</div>
 
-		<div class="max-md:visible">
+		<div class="xl:hidden">
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
@@ -70,7 +80,6 @@
 								Спеціалізація:
 							</span>
 
-							<br />
 							Дмитро спеціалізується на господарському та цивільному судових процесах, допомагаючи клієнтам
 							ефективно вирішувати правові питання, пов'язані з бізнесом та особистими справами.
 						</p>
@@ -80,7 +89,6 @@
 								Чому обрати Дмитра:
 							</span>
 							
-							<br />
 							Завдяки багаторічному досвіду та глибоким знанням, Дмитро Попроцький пропонує своїм клієнтам
 							професійний підхід та надійну правову підтримку. Його компетентність і відповідальність
 							гарантують успішне вирішення навіть найскладніших юридичних питань.
@@ -90,7 +98,7 @@
 			{/if}
 
 			<button
-				class="read-more-btn"
+				class="read-more-btn color-7d7e7e"
 				onclick={toggleInfo}
 				aria-label={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
 				title={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
@@ -98,7 +106,7 @@
 				{#if isShowInfo}
 					<span> Сховати </span>
 				{:else}
-					<span class="flex items-end color-7d7e7e">
+					<span class="flex items-end">
 						Читати далі
 
 						<i>

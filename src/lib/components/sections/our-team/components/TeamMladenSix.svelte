@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
-	let { toggleInfo, isShowInfo } = $props();
+	let isShowInfo = $state(false)
+	let teamMladen: HTMLDivElement;
+	
+	function toggleInfo() {
+		// Якщо інформація зараз показана (тобто ми її ховаємо)
+		if (isShowInfo) {
+			// Скролимо до початку цього компонента
+			teamMladen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+		isShowInfo = !isShowInfo;
+	}
 </script>
 
-<div class="team-container">
+<div class="team-container" bind:this={teamMladen}>
 	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-six.webp" type="image/webp" />
 		<img
@@ -32,7 +42,7 @@
 			практикою робить його надзвичайно цінним спеціалістом.
 		</p>
 
-		<div class="max-xl:hidden">
+		<div class="hidden xl:block">
 			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
@@ -59,13 +69,13 @@
 			</p>
 		</div>
 
-		<div class="max-md:visible">
+		<div class="xl:hidden">
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
-							<br />
+
 							Младен спеціалізується у різних галузях права, що дозволяє йому ефективно вирішувати найрізноманітніші
 							юридичні питання. Його всебічні знання і вміння охоплюють широкий спектр правових проблем,
 							що робить його універсальним юристом.
@@ -73,7 +83,7 @@
 
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Особисті якості:</span>
-							<br />
+
 							Младен є душею команди та головою нашого адвокатського об'єднання. Його нестандартний підхід
 							до вирішення різних питань виділяє його серед інших фахівців. Младен відзначається високим
 							професіоналізмом, креативністю та здатністю знаходити унікальні рішення для складних ситуацій.
@@ -81,7 +91,7 @@
 
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Чому обрати Младена:</span>
-							<br />
+							
 							Чому обрати Младена: Младен Бардук не лише є дуже хорошим спеціалістом, але й лідером, який
 							веде свою команду до успіху. Його компетентність, нестандартне мислення та багаторічний
 							досвід у правовій сфері гарантують, що клієнти отримують найкращу правову допомогу. З таким
@@ -92,7 +102,7 @@
 			{/if}
 
 			<button
-				class="read-more-btn"
+				class="read-more-btn color-7d7e7e"
 				onclick={toggleInfo}
 				aria-label={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
 				title={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
@@ -100,7 +110,7 @@
 				{#if isShowInfo}
 					<span> Сховати </span>
 				{:else}
-					<span class="flex items-end color-7d7e7e">
+					<span class="flex items-end ">
 						Читати далі
 
 						<i>

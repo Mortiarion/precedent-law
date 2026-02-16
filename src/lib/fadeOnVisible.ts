@@ -1,6 +1,6 @@
 import { Tween } from 'svelte/motion';
 
-export interface FadeOptions {
+export interface IFadeOptions {
     duration?: number;
     threshold?: number;
     root?: Element | null;
@@ -11,7 +11,7 @@ export interface FadeOptions {
 
 export function fadeOnVisible(
     node: HTMLElement,
-    options: FadeOptions = {}
+    options: IFadeOptions = {}
 ) {
     if (typeof IntersectionObserver === 'undefined') {
         return {};

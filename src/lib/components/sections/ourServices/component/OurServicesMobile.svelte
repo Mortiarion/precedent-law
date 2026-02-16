@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import { getCategories, getServicesByCategory } from '$lib/services';
 	import Popup from './Popup.svelte';
 
@@ -53,7 +53,7 @@
 	</div>
 {/if}
 
-<ul class="filter-list mb-20 flex flex-col gap-5">
+<ul class="filter-list flex flex-col gap-5">
 	{#each getServicesByCategory(activeCategory) as item}
 		<li class="service-item" use:fadeOnVisible>
 			<span class="font-roboto text-center text-sm font-normal">
@@ -89,19 +89,25 @@
 		border-radius: 8px;
 		background: white;
 		border: 1px solid #e4e4e4;
-	}
 
-	.filter-button:hover {
-		background-color: #cab18a;
-		color: white;
-		transform: translateX(4px);
-	}
+		&:focus {
+			background-color: red;
+			color: white;
+			transform: translateX(4px);
+		}
 
-	.filter-button.active {
-		background-color: #e4e4e4;
-		color: #292424;
-		pointer-events: none;
-		font-weight: 600;
+		&.active {
+			background-color: #e4e4e4;
+			color: #292424;
+			pointer-events: none;
+			font-weight: 600;
+		}
+
+		&:active {
+			background-color: #cab18a;
+			color: white;
+			transform: translateX(4px);
+		}
 	}
 
 	.service-item {
@@ -118,9 +124,9 @@
 			2px 1px 4px rgba(138, 133, 133, 0.1);
 		border-radius: 10px;
 		transition: transform 0.2s ease;
-	}
 
-	.service-item:active {
-		transform: scale(0.98);
+		&:active {
+			transform: scale(0.98);
+		}
 	}
 </style>

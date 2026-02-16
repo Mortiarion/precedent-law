@@ -1,28 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
-	
-
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 
 	let { children } = $props();
-
-	onMount(() => {
-		// При першому завантаженні скролимо на верх
-		// if (window.location.hash) {
-		// 	window.scrollTo(0, 0);
-		// }
-	});
-
-	afterNavigate(() => {
-		// При навігації без hash скролимо на верх
-		// if (!window.location.hash) {
-		// 	window.scrollTo(0, 0);
-		// }
-	});
 </script>
 
 <svelte:head>

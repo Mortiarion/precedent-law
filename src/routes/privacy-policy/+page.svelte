@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { fadeOnVisible } from "$lib";
+	import { fadeOnVisible } from "$lib/fadeOnVisible";
 </script>
 
 <section class="flex-auto">

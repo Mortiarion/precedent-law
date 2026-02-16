@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
-	let { toggleInfo, isShowInfo } = $props();
+	let isShowInfo = $state(false);
+	let teamDiana: HTMLDivElement;
+	
+	function toggleInfo() {
+		// Якщо інформація зараз показана (тобто ми її ховаємо)
+		if (isShowInfo) {
+			// Скролимо до початку цього компонента
+			teamDiana.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+		isShowInfo = !isShowInfo;
+	}
 </script>
 
-<div class="team-container">
+<div class="team-container" bind:this={teamDiana}>
 	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-one.webp" type="image/webp" />
 		<img
@@ -39,13 +49,13 @@
 			професійної діяльності, вона вже встигла зарекомендувати себе як висококваліфікований фахівець.
 		</p>
 
-		<div class="max-xl:hidden">
+		<div class="hidden xl:block">
 			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">
 					Спеціалізація:
 				</span>
 
-				<br />
+				<br  />
 				Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
 				з адміністративного права. Її експертні знання та досвід допомогли врятувати не одне підприємство
 				від правових труднощів.
@@ -74,7 +84,7 @@
 			</p>
 		</div>
 
-		<div class="max-md:visible">
+		<div class="xl:hidden">
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
@@ -83,7 +93,6 @@
 								Спеціалізація:
 							</span>
 
-							<br />
 							
 							Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
 							з адміністративного права. Її експертні знання та досвід допомогли врятувати не одне підприємство
@@ -95,7 +104,6 @@
 								Особисті якості:
 							</span>
 
-							<br />
 							Нехай Вас не бентежить вік та привабливість Діани. Вона є відмінним спеціалістом, яка відзначається
 							виконавчістю, чесністю та порядністю. Її професіоналізм, уважність до деталей та відданість
 							своїй роботі забезпечують успішний результат кожної справи, якою вона займається.
@@ -106,7 +114,6 @@
 								Чому обрати Діану:
 							</span>
 							
-							<br />
 							Діана Лісіна - це надійний партнер у вирішенні юридичних питань.Її компетентність, відповідальність
 							та прагнення досягати найкращих результатів роблять її незамінною для клієнтів, які шукають
 							надійну правову підтримку.
@@ -116,7 +123,7 @@
 			{/if}
 
 			<button
-				class="read-more-btn"
+				class="read-more-btn color-7d7e7e"
 				onclick={toggleInfo}
 				aria-label={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
 				title={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
@@ -124,7 +131,7 @@
 				{#if isShowInfo}
 					<span> Сховати </span>
 				{:else}
-					<span class="flex items-end color-7d7e7e">
+					<span class="flex items-end">
 						Читати далі
 
 						<i>

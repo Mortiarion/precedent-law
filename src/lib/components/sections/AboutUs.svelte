@@ -1,12 +1,18 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 </script>
 
 <section id="about-us" class="bg-about-as">
 	<div class="container pt-14 pb-10 xl:px-20">
 		<div class="flex lg:flex-col lg:gap-10 xl:flex-row xl:gap-28">
 			<article class="xl:w-3/5">
-				<h3 class="main-title mb-10" id="about-us-title" use:fadeOnVisible>Про нас</h3>
+				<h3 
+					class="main-title mb-10" 
+					id="about-us-title" 
+					use:fadeOnVisible
+				>
+					Про нас
+				</h3>
 
 				<div class="flex flex-col gap-10">
 					<p use:fadeOnVisible>

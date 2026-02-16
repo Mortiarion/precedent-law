@@ -1,14 +1,14 @@
 <script lang="ts">
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import { getCategories, getServicesByCategory } from '$lib/services';
 	import Popup from './Popup.svelte';
-    
 
 	const categories = getCategories();
 	let activeCategory = $state('Все');
     let showModal = $state(false);
 </script>
 
-<div class="mb-20 flex flex-wrap justify-center px-25">
+<div class="mb-20 flex flex-wrap justify-center px-25" use:fadeOnVisible>
 	{#each categories as category}
 		<button
 			onclick={() => (activeCategory = category)}
@@ -27,6 +27,7 @@
 			<button
 				onclick={() => (showModal = true)}
 				class="bg-button-our-services cursor-pointer rounded px-5 py-2.5 text-xl whitespace-nowrap text-white"
+				use:fadeOnVisible
 			>
 				Отримати консультацію
 			</button>
@@ -37,12 +38,6 @@
 <Popup bind:showModal/>
 
 <style lang="postcss">
-	.subcategories {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
-	}
 	.filter-button {
 		padding: 0.5rem 1rem;
 		font-size: 20px;
@@ -50,15 +45,24 @@
 		border: 1px solid #e4e4e4;
 		cursor: pointer;
 		transition: background-color 0.3s ease;
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				background-color: #cab18a;
+			}
+		}
+		
+		&:active {
+			background-color: #cab18a;
+		}
+
+		&.active {
+			background-color: #e4e4e4;
+			color: #292424;
+			pointer-events: none;
+		}
 	}
-	.filter-button:hover {
-		background-color: #cab18a;
-	}
-	.filter-button.active {
-		background-color: #e4e4e4;
-		color: #292424;
-		pointer-events: none;
-	}
+
 	.filter-list-item {
 		display: flex;
 		align-items: center;

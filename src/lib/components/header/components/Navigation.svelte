@@ -19,7 +19,7 @@
 
 	<li>
 		<a
-			href="/#our-serveces"
+			href="/#our_services"
 			class="border-b border-transparent transition-colors duration-500 hover:border-white"
 			aria-label="Перейти до секції"
 			title="Перейти до секції">Послуги</a

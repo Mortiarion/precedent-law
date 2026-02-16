@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { fadeOnVisible } from '$lib';
+	import { fadeOnVisible } from '$lib/fadeOnVisible';
 	import ArrowRightIcon from '$lib/icons/ArrowRightIcon.svelte';
 	import { fade, slide } from 'svelte/transition';
 
-	let { toggleInfo, isShowInfo } = $props();
+	let isShowInfo = $state(false)
+	let teamLilia: HTMLDivElement;
+		
+	function toggleInfo() {
+		// Якщо інформація зараз показана (тобто ми її ховаємо)
+		if (isShowInfo) {
+			// Скролимо до початку цього компонента
+			teamLilia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+		isShowInfo = !isShowInfo;
+	}
 </script>
 
-<div class="team-container-reverse">
+<div class="team-container-reverse" bind:this={teamLilia}>
 	<picture class="max-w-full" use:fadeOnVisible>
 		<source srcset="/img/our-team-five.webp" type="image/webp" />
 		<img
@@ -32,7 +42,7 @@
 			та роботу в міграційній службі України.
 		</p>
 
-		<div class="max-xl:hidden">
+		<div class="hidden xl:block">
 			<p class="our-team-p" use:fadeOnVisible>
 				<span class="font-semibold">Спеціалізація:</span>
 				<br />
@@ -66,39 +76,49 @@
 			</p>
 		</div>
 
-		<div class="max-md:visible">
+		<div class="xl:hidden">
 			{#if isShowInfo}
 				<div transition:slide>
 					<div class="flex flex-col" transition:fade>
 						<p class="our-team-p" use:fadeOnVisible>
 							<span class="font-semibold">Спеціалізація:</span>
-							<br />
-							Діана спеціалізується на корпоративних спорах та договірному праві,а також на судових процесах
-							з адміністративного права. Її експертні знання та досвід допомогли врятувати не одне підприємство
-							від правових труднощів.
+
+							Лілія спеціалізується на міжнародному праві, зовнішньоекономічній діяльності, міграційному
+							праві, консульських і дипломатичних зносинах. Вона також має великий досвід у сфері бізнесу
+							та електронної комерції, включаючи крипто право та ІТ право.
 						</p>
 
 						<p class="our-team-p" use:fadeOnVisible>
-							<span class="font-semibold">Особисті якості:</span>
-							<br />
-							Нехай Вас не бентежить вік та привабливість Діани. Вона є відмінним спеціалістом, яка відзначається
-							виконавчістю, чесністю та порядністю. Її професіоналізм, уважність до деталей та відданість
-							своїй роботі забезпечують успішний результат кожної справи, якою вона займається.
+							<span class="font-semibold">Досвід:</span>
+
+							З 20-річним стажем у юридичній практиці, Лілія втілює юридичну майстерність та міжнародний
+							досвід. Вона не тільки розуміє закони, але й передбачає їх вплив на ваш бізнес та життя.
 						</p>
 
 						<p class="our-team-p" use:fadeOnVisible>
-							<span class="font-semibold">Чому обрати Діану:</span>
-							<br />
-							Діана Лісіна - це надійний партнер у вирішенні юридичних питань.Її компетентність, відповідальність
-							та прагнення досягати найкращих результатів роблять її незамінною для клієнтів, які шукають
-							надійну правову підтримку.
+							<span class="font-semibold">Чому обрати Лілію:</span>
+
+							Лілія володіє кількома мовами, включаючи англійську, німецьку, турецьку та грузинську, і
+							є стратегічним партнером у сфері міжнародного права, економіки та бізнесу. Вона має глибокі
+							знання та практичний досвід у Європейському Союзі, країнах Кавказу та Азії, зокрема у бізнесі
+							та електронній комерції. Її робота в Грузії, Туреччині, Китаї та країнах ЄС надає їй унікальний
+							інсайт, який вона використовує для захисту інтересів своїх клієнтів.
+						</p>
+
+						<p class="our-team-p" use:fadeOnVisible>
+							У світі, де криптовалюта та ІТ право стають все більш актуальними, Лілія пропонує
+							передові рішення у цих швидко розвиваючихся галузях. Вона забезпечує захист ваших
+							інтересів на крипто-платформах та кібербезпеку, допомагає розуміти оподаткування та
+							легально працювати в різних країнах світу. Лілія - експерт, який не тільки виведе вас зі
+							складних юридичних лабіринтів, але й допоможе будувати міцний фундамент для вашого
+							майбутнього успіху у бізнесі та інвестиціях.
 						</p>
 					</div>
 				</div>
 			{/if}
 
 			<button
-				class="read-more-btn"
+				class="read-more-btn color-7d7e7e"
 				onclick={toggleInfo}
 				aria-label={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
 				title={isShowInfo ? 'Показати інформацію' : 'Сховати інформацію'}
@@ -106,7 +126,7 @@
 				{#if isShowInfo}
 					<span> Сховати </span>
 				{:else}
-					<span class="flex items-end color-7d7e7e">
+					<span class="flex items-end">
 						Читати далі
 
 						<i>
