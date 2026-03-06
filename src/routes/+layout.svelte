@@ -11,7 +11,7 @@
 	<link rel="icon" href={favicon} />
 
 	<title>
-		Precedent Law
+		Адвокатське обʼєднання "Прецедент права"
 	</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
